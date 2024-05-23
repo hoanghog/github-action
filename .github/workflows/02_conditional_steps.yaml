@@ -1,0 +1,39 @@
+name: 02_conditional_steps
+
+on:
+  workflow_dispatch:
+
+jobs:
+    example:
+      runs-on: ubuntu-latest
+    
+    steps:
+      - name: Step 1 - success (0)
+        id: succesful_step
+        run: |
+          echo "exit with code 0"
+          exit 0
+        shell: bash
+    
+      - name: Step 2 - cond if success
+        id: conditional_success
+        if: ${{ success() }}
+        run: |
+          echo "The previous step was sucessful"
+      
+      - name: Step 3 - fail (1)
+        id: fail_step
+        run: |
+          echo "exit with code 1"
+          exit 1
+        
+      - name: Step 4 - I will never execute
+        id: never_execute
+        run: |
+          echo "I will never execute"
+      
+      - name: Step 5 - cond if failed
+        id: conditional_fail
+        if: ${{ failure() }}
+        run: |
+          echo "Workflow failed"

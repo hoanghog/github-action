@@ -1,0 +1,25 @@
+name: 04 A dependent job
+
+on:
+  workflow_dispatch:
+    inputs:
+      username:
+        description: Username
+        default: Martin
+        required: true
+        type: string
+      age:
+        description: Age
+        default: 28
+        required: true
+        type: number
+
+jobs:
+  echo-username-age:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo username age
+        run: |
+          echo "Username: ${{ inputs.username }}"
+          echo "Age: ${{ inputs.age }}"

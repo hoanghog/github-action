@@ -1,0 +1,17 @@
+name: 04 B dependent job
+
+on:
+  workflow_run:
+    workflows:
+      - 04 A dependent job
+    types:
+      - completed
+
+jobs:
+  finish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Echo finish
+        run: |
+          echo "Finished after workflow A"

@@ -1,0 +1,16 @@
+name: 06 A passing values between steps
+
+on:
+  workflow_dispatch:
+
+jobs:
+  defining:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Define value
+        id: sender
+        run: echo "name=Martin" >> $GITHUB_OUTPUT
+
+      - name: Receive value
+        run: echo ${{ steps.sender.outputs.name }}

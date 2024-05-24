@@ -1,0 +1,29 @@
+name: 03 parallel jobs
+
+on: 
+  workflow_dispatch:
+
+jobs: 
+  linter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Linting
+        run: echo "Starting linter..."
+  
+  unit-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Unit testing
+        run: echo "Starting unit tests..."
+  
+  integration_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Prepare
+        run: echo "Prepare test environment..."
+
+      - name: Integration test
+        run: echo "Starting integration tests..."

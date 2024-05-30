@@ -65,7 +65,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: backend
-          tags: $${{ vars.DOCKER_HUB_IMAGE }}:${{ inputs.image-tag }}
+          tags: ${{ vars.DOCKER_HUB_IMAGE }}:${{ inputs.image-tag }}
           outputs: type=docker,dest=/tmp/image.tar
 
       - name: Upload artifact

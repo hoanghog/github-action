@@ -1,0 +1,24 @@
+name: 11 Permissions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  example:
+    permissions:
+      contents: read
+    
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Attempt write operation
+        run: |
+          touch new-file.txt
+          git config --global user.name Martin Hoang
+          git config --global user.email martinhoangdev@gmail.com
+          git add new-file.txt
+          git commit -m "attempt to write"
+          git push origin ${{ github.ref }}
